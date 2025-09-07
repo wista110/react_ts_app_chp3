@@ -33,8 +33,12 @@ import './App.css';
 const title = "React page.";
 const massage = "メッセージを表示します";
 
-function Msg() {
-  return <p className='msg'>Hello!!</p>;
+function Msg(msg:string, size:number, color:string) {
+  const s = {
+    fontSize: size + "pt",
+    color: color,
+  }
+  return <p className='msg' style={s}>{msg}</p>;
 }
 
 function App() {
@@ -42,9 +46,11 @@ function App() {
     <div className='container'>
       <h1>{title}</h1>
       <h2>{massage}</h2>
-      <Msg />
-      <Msg />
-      <Msg />
+      <div>
+        { Msg("最初のメッセージ", 36, "red") }
+        { Msg("次のメッセージ", 24, "lightgray") }
+        { Msg("最後のメッセージ", 12, "black") }
+      </div>
     </div>
   );
 }
