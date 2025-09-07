@@ -33,12 +33,19 @@ import './App.css';
 const title = "React page.";
 const massage = "メッセージを表示します";
 
-function Msg(msg:string, size:number, color:string) {
+// MsgPropsインターフェイスの定義
+interface MsgProps {
+  msg: string;
+  size: number;
+  color: string;
+}
+
+function Msg(props: MsgProps) {
   const s = {
-    fontSize: size + "pt",
-    color: color,
+    fontSize: props.size + "pt",
+    color: props.color,
   }
-  return <p className='msg' style={s}>{msg}</p>;
+  return <p className='msg' style={s}>{props.msg}</p>;
 }
 
 function App() {
@@ -47,9 +54,9 @@ function App() {
       <h1>{title}</h1>
       <h2>{massage}</h2>
       <div>
-        { Msg("最初のメッセージ", 36, "red") }
-        { Msg("次のメッセージ", 24, "lightgray") }
-        { Msg("最後のメッセージ", 12, "black") }
+      <Msg msg="最初のメッセージ" size={20} color="orange" />
+      <Msg msg="次のメッセージ" size={20} color="lightgreen" />
+      <Msg msg="最後のメッセージ" size={20} color="skyblue" />
       </div>
     </div>
   );
