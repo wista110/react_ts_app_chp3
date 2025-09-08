@@ -131,30 +131,26 @@ const data = [
   {name:'saburo', mail:'saburo@success',age:22},
 ];
 
+function getData(n:number) {
+  const flg = n % 2 === 0;
+  return (
+    <p className='msg'
+      style={flg ? {backgroundColor:'gray',color:'white'} : {}}>
+      [{n+1}] {data[n].name}({data[n].mail}) &lt;{data[n].age}&gt;
+    </p>
+  );
+}
 
 function App() {
   return (
     <div className='container'>
       <h1>{title}</h1>
       <h2>{massage}</h2>
-      <table className='data-table'>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Mail</th>
-            <th>Age</th>
-          </tr>
-        </thead>
-      <tbody>
-        {data.map((value) => (
-          <tr>
-            <td>{value.name}</td>
-            <td>{value.mail}</td>
-            <td>{value.age}</td>
-          </tr>
-        ))}
-      </tbody>
-      </table>
+      {getData(0)}
+      {getData(1)}
+      {getData(2)}
+      {getData(3)}
+      {getData(4)}
     </div>
   );
 }
