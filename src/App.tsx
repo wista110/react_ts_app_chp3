@@ -117,28 +117,96 @@
 // export default App;
 
 //チャプター３-３ map App.tsx
+// import React from 'react';
+// import './App.css';
+
+// const title = "React page.";
+// const massage = "メッセージを表示します";
+
+// const data = [
+//   {name:'taro', mail:'taro@yamada',age:12},
+//   {name:'hanako', mail:'hanako@flower',age:15},
+//   {name:'sachiko', mail:'sachiko@happy',age:18},
+//   {name:'jiro', mail:'jiro@change',age:20},
+//   {name:'saburo', mail:'saburo@success',age:22},
+// ];
+
+// function getData(n:number) {
+//   const flg = n % 2 === 0;
+//   return (
+//     <p className='msg'
+//       style={flg ? {backgroundColor:'gray',color:'white'} : {}}>
+//       [{n+1}] {data[n].name}({data[n].mail}) &lt;{data[n].age}&gt;
+//     </p>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <div className='container'>
+//       <h1>{title}</h1>
+//       <h2>{massage}</h2>
+//       {getData(0)}
+//       {getData(1)}
+//       {getData(2)}
+//       {getData(3)}
+//       {getData(4)}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// オブジェクトを記述する
+// import React from 'react';
+// import './App.css';
+
+// const title = "React page.";
+// const massage = "メッセージを表示します";
+
+// interface DataInterface {
+//   data: {
+//     name: string;
+//     mail: string;
+//     age: number;
+//   }
+// }
+
+// function Data(props:DataInterface) {
+//   return (
+//     <p className='msg'>
+//       {props.data.name}({props.data.age}) &lt;{props.data.mail}&gt;
+//     </p>
+//   );  
+// }
+
+// function App() {
+//   return (
+//     <div className='container'>
+//       <h1>{title}</h1>
+//       <h2>{massage}</h2>
+//       <Data data={{name:'taro', mail:'taro@yamada', age:12}} />
+//       <Data data={{name:'hanako', mail:'hanako@flower', age:15}} />
+//       <Data data={{name:'sachiko', mail:'sachiko@happy', age:18}} />
+//       <Data data={{name:'jiro', mail:'jiro@change', age:20}} />
+//       <Data data={{name:'saburo', mail:'saburo@success', age:22}} />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//アロー関数
 import React from 'react';
 import './App.css';
 
 const title = "React page.";
 const massage = "メッセージを表示します";
 
-const data = [
-  {name:'taro', mail:'taro@yamada',age:12},
-  {name:'hanako', mail:'hanako@flower',age:15},
-  {name:'sachiko', mail:'sachiko@happy',age:18},
-  {name:'jiro', mail:'jiro@change',age:20},
-  {name:'saburo', mail:'saburo@success',age:22},
-];
-
-function getData(n:number) {
-  const flg = n % 2 === 0;
-  return (
-    <p className='msg'
-      style={flg ? {backgroundColor:'gray',color:'white'} : {}}>
-      [{n+1}] {data[n].name}({data[n].mail}) &lt;{data[n].age}&gt;
-    </p>
-  );
+const data = {
+  url:'http://google.com',
+  title:'Google',
+  caption:'このサイトは検索エンジンのGoogleのサイトです。',
 }
 
 function App() {
@@ -146,12 +214,20 @@ function App() {
     <div className='container'>
       <h1>{title}</h1>
       <h2>{massage}</h2>
-      {getData(0)}
-      {getData(1)}
-      {getData(2)}
-      {getData(3)}
-      {getData(4)}
-    </div>
+      {(()=>
+        <div className="card">
+          <div className="header">
+            {data.title}
+          </div>
+          <div className="body">
+            {data.caption}
+          </div>
+          <div className="footer">
+            <a href={data.url}>※{data.title}に移動</a>
+          </div>
+        </div>
+      )()}
+      </div>
   );
 }
 
