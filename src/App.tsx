@@ -64,25 +64,97 @@
 // export default App;
 
 // チャプター３-3 App.tsx
+// import React from 'react';
+// import './App.css';
+
+// const title = "React page.";
+// const massage = "メッセージを表示します";
+// const content = "これがtrueの場合に表示されるメッセージです。";
+
+// const flg = true; //trueの時にメッセージを表示
+
+// function App() {
+//   return (
+//     <div className='container'>
+//       <h1>{title}</h1>
+//       <p>{massage}</p>
+//       {flg && 
+//       <div className='msg'>
+//       <p>{content}</p>
+//       </div>
+//       }
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// チャプター３-3 配列 App.tsx
+// import React from 'react';
+// import './App.css';
+
+// const title = "React page.";
+// const massage = "メッセージを表示します";
+
+// const data = [
+//   <li className='msg'>One</li>,
+//   <li className='msg'>Two</li>,
+//   <li className='msg'>Three</li>,
+// ];
+
+// function App() {
+//   return (
+//     <div className='container'>
+//       <h1>{title}</h1>
+//       <p>{massage}</p>
+//       <ul>
+//         {data}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//チャプター３-３ map App.tsx
 import React from 'react';
 import './App.css';
 
 const title = "React page.";
 const massage = "メッセージを表示します";
-const content = "これがtrueの場合に表示されるメッセージです。";
 
-const flg = true; //trueの時にメッセージを表示
+const data = [
+  {name:'taro', mail:'taro@yamada',age:12},
+  {name:'hanako', mail:'hanako@flower',age:15},
+  {name:'sachiko', mail:'sachiko@happy',age:18},
+  {name:'jiro', mail:'jiro@change',age:20},
+  {name:'saburo', mail:'saburo@success',age:22},
+];
+
 
 function App() {
   return (
     <div className='container'>
       <h1>{title}</h1>
-      <p>{massage}</p>
-      {flg && 
-      <div className='msg'>
-      <p>{content}</p>
-      </div>
-      }
+      <h2>{massage}</h2>
+      <table className='data-table'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Mail</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+      <tbody>
+        {data.map((value) => (
+          <tr>
+            <td>{value.name}</td>
+            <td>{value.mail}</td>
+            <td>{value.age}</td>
+          </tr>
+        ))}
+      </tbody>
+      </table>
     </div>
   );
 }
